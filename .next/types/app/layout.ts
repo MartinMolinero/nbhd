@@ -1,4 +1,4 @@
-// File: /Users/malejmol/Documents/nbhd/src/app/layout.js
+// File: /Users/estebanquintana/Documents/Github/nbhd/src/app/layout.js
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
