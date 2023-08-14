@@ -1,4 +1,6 @@
 import Head from 'next/head';
+
+import Navbar from '@components/Shared/Navbar';
 import Announcements from '@components/Announcements';
 
 const AnnouncementsPage = () => {
@@ -11,6 +13,7 @@ const AnnouncementsPage = () => {
             <link rel="icon" href="/simple_logo_red.svg" />
           </Head>
           <main>
+            <Navbar />
             <Announcements />
           </main>
         </>
