@@ -7,7 +7,19 @@
       ],
       "@styles/*": [
         "styles/*"
-      ]
+      ],
+      "@constants/*": [
+        "constants/*"
+      ],
+      "@contexts/*": [
+        "contexts/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
     }
   }
 }
