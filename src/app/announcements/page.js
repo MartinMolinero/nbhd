@@ -1,4 +1,4 @@
-import AnnouncementPreview from '@components/AnnouncementPreview'
+import AnnouncementPreview from "@components/AnnouncementPreview";
 
 const fetchAnnouncements = async () => {
   try {
@@ -14,9 +14,9 @@ const AnnouncementsPage = async() => {
   const { blogs } = await fetchAnnouncements();
   return (
     <>
-      {blogs.map((announcement,  index) => <AnnouncementPreview key={index} announcement={announcement}></AnnouncementPreview>)}
+      {blogs.map((announcement,  index) => <AnnouncementPreview key={index} announcement={announcement} />)}
     </>
   )
 }
 
-export default AnnouncementsPage
+export default AnnouncementsPage;

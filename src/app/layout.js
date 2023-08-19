@@ -1,3 +1,4 @@
+import { Providers } from "@redux/provider";
 import { AuthenticationProvider, ProtectRoute } from '@contexts/auth';
 import '../../styles/globals.css';
 import { Inter } from 'next/font/google';
@@ -10,12 +11,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Navbar></Navbar>
-        <AuthenticationProvider>
-          <ProtectRoute>
-            {children}
-          </ProtectRoute>
-        </AuthenticationProvider>
+        <Providers>
+          <Navbar></Navbar>
+          <AuthenticationProvider>
+            <ProtectRoute>
+              {children}
+            </ProtectRoute>
+          </AuthenticationProvider>
+        </Providers>
       </body>
     </html>
   )

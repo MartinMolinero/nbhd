@@ -17,8 +17,8 @@
       "@utils/*": [
         "utils/*"
       ],
-      "@pages/*": [
-        "pages/*"
+      "@redux/*": [
+        "src/redux/*"
       ],
     }
   }

@@ -1,39 +1,37 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import GENERAL_URLS from "@constants/urls";
 
 const AuthContext = React.createContext({})
 
-export const AuthenticationProvider = ({children}) => {
-    const [user, setUser] = useState(null)
-    const isAuthenticated = !!user
-    const router = useRouter()
-    const [isLoading, setIsLoading] = useState(false)
+export const AuthenticationProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const router = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
 
     const logout = () => {
-        setUser(null)
-        setIsLoading(false)
-        router.push(GENERAL_URLS.HOME.route)
+        setUser(null);
+        setIsLoading(false);
+        router.push(GENERAL_URLS.HOME.route);
     }
 
     const authenticate = () => {
-        console.log('AUTHENTICATING')
-        setIsLoading(true)
+        setIsLoading(true);
         // TODO - make api request to authenticate
         setUser({
             name: 'Martin',
             lastName: 'Molinero',
             email: 'martin@me.com',
             isAdmin: false
-        })
-        
-        setIsLoading(false)
+        });
+
+        setIsLoading(false);
     }
 
     useEffect(() => {
-        authenticate()
+        authenticate();
     }, [])
 
     return (
@@ -49,16 +47,26 @@ export const AuthenticationProvider = ({children}) => {
         >
             {children}
         </AuthContext.Provider>
-    )
+    );
 }
 
-export const useAuth = () => useContext(AuthContext)
-export const ProtectRoute = ({children}) => {
-    const {isAuthenticated, isLoading} = useAuth();
-    const notAuthenticatedOrLoggingIn = (!isAuthenticated && window.location.pathname !== GENERAL_URLS.LOGIN.route)
-    if (isLoading ||notAuthenticatedOrLoggingIn ) {
-        console.log('PROTECTING')
-        return <h1>Protecting Route</h1>
+export const useAuth = () => useContext(AuthContext);
+
+export const ProtectRoute = ({ children }) => {
+    const { isAuthenticated, isLoading } = useAuth();
+    const [pathName, setPathName] = useState();
+
+    useEffect(() => {
+        setPathName(window.location.pathname);
+    });
+
+    const notAuthenticatedOrLoggingIn = (!isAuthenticated && pathName !== GENERAL_URLS.LOGIN.route)
+
+    if (isLoading || notAuthenticatedOrLoggingIn) {
+        return (
+            <h1>Protecting Route</h1>
+        );
     }
+
     return children
 }
