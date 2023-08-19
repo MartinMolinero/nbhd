@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import announcementsReducer from "./features/announcementsSlice";
+import announcementsReducer from "./slices/announcementsSlice";
 
 export const store = configureStore({
   reducer: {

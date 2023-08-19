@@ -4,7 +4,7 @@
 
 import React from "react";
 
-import { openCreationModal } from "@redux/features/announcementsSlice";
+import { openCreationModal } from "@redux/slices/announcementsSlice";
 import { useAppDispatch } from "@redux/hooks";
 
 const Navbar = () => {

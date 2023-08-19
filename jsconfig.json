@@ -11,9 +11,6 @@
       "@constants/*": [
         "constants/*"
       ],
-      "@contexts/*": [
-        "contexts/*"
-      ],
       "@utils/*": [
         "utils/*"
       ],
