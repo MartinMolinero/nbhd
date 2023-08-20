@@ -11,9 +11,11 @@ export const ProtectedRoute = ({ children }) => {
 
     useEffect(() => {
         // checks if the user is authenticated
-        console.log(token);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        if (token === null) {
+            router.push('/');
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [token, router]);
 
     return (
         <>
