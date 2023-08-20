@@ -1,3 +1,4 @@
+
 import AnnouncementPreview from "@components/AnnouncementPreview";
 
 const fetchAnnouncements = async () => {
@@ -10,11 +11,16 @@ const fetchAnnouncements = async () => {
   }
 }
 
-const AnnouncementsPage = async() => {
+export const metadata = {
+  title: "NHBD - Anuncios",
+  description: "Gestor de colonia",
+};
+
+const AnnouncementsPage = async () => {
   const { blogs } = await fetchAnnouncements();
   return (
     <>
-      {blogs.map((announcement,  index) => <AnnouncementPreview key={index} announcement={announcement} />)}
+      {blogs.map((announcement, index) => <AnnouncementPreview key={index} announcement={announcement} />)}
     </>
   )
 }

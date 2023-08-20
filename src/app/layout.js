@@ -1,14 +1,18 @@
 import { Providers } from "@redux/provider";
 
 import { Inter } from 'next/font/google';
+import dynamic from 'next/dynamic'
 
 import '../../styles/globals.css';
 
-import Navbar from 'components/Shared/Navbar';
-import { ProtectedRoute } from "@utils/ProtectedRoute";
+const Navbar = dynamic(() => import('components/Shared/Navbar'), { ssr: false });
+
 import { store } from "@redux/store";
 
-const inter = Inter({ subsets: ['latin'] })
+export const metadata = {
+  title: "NHBD",
+  description: "Gestor de colonia",
+};
 
 export default function RootLayout({ children }) {
   return (
