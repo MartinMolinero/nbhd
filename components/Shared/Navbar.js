@@ -35,17 +35,19 @@ const Navbar = () => {
                 </a>
                 <div className="flex md:order-2">
                     {isLogged ?
-                        <button onClick={handleLogoutButton} type="button" className="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-2 bg-red-600 hover:bg-red-700 focus:ring-red-800">
-                            Cerrar sesión
-                        </button> :
+                        <>
+                            <button onClick={handleLogoutButton} type="button" className="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-2 bg-red-600 hover:bg-red-700 focus:ring-red-800">
+                                Cerrar sesión
+                            </button>
+                            <button onClick={() => router.push('/announcements/new')} type="button" className="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                                Nuevo anuncio
+                            </button>
+                        </>
+                        :
                         <button onClick={handleLoginButton} type="button" className="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
                             Iniciar sesión
                         </button>
                     }
-
-                    <button onClick={() => router.push('/announcements/new')} type="button" className="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-                        Nuevo anuncio
-                    </button>
 
                     <button data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden focus:outline-none focus:ring-2 text-gray-400 hover:bg-gray-700 focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
                         <span className="sr-only">Open main menu</span>
