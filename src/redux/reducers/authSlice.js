@@ -13,17 +13,23 @@ const initialState = {
 const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers: {
+    extraReducers: {
         [logout]: (state) => {
-            state.loading = false;
-            state.userToken = null;
-            state.userInfo = {};
+            return {
+                ...state,
+                loading: false,
+                userToken: null,
+                userInfo: {}
+            }
         },
         [userLogin]: (state, { payload }) => {
-            console.log(userLogin);
-            state.userInfo = payload.userInfo;
-            state.userToken = payload.token;
-            state.loading = false;
+            console.log(payload);
+            return {
+                ...state,
+                userInfo: payload.userInfo,
+                userToken: payload.userToken,
+                loading: false,
+            }
         }
     },
 });

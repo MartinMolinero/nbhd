@@ -11,8 +11,6 @@ export const userLogin = createAction('auth/login', () => {
         userToken: 'mmmmm'
     }
 
-    console.log("here");
-
     return {
         payload: data
     }
