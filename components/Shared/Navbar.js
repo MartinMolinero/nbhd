@@ -1,14 +1,30 @@
-'use client';
+"use client"
 
-"use client";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
-import React from "react";
+import { useAppDispatch, useAppSelector } from "@redux/hooks";
 
-import { openCreationModal } from "@redux/slices/announcementsSlice";
-import { useAppDispatch } from "@redux/hooks";
+import { userLogin, logout } from "@redux/actions/authActions";
 
 const Navbar = () => {
+    const [isLogged, setIsLogged] = useState(false);
+
+    const router = useRouter();
     const dispatch = useAppDispatch();
+    const token = useAppSelector(({ authReducer }) => authReducer.userToken);
+
+    useEffect(() => {
+        setIsLogged(token && true);
+    }, [token]);
+
+    const handleLoginButton = () => {
+        dispatch(userLogin()); // TO DO: agregar logica real de este boton
+    }
+
+    const handleLogoutButton = () => {
+        dispatch(logout()); // TO DO: agregar logica real de este boton
+    }
 
     return (
         <nav className="bg-gray-900 w-full z-20 top-0 left-0 border-b border-gray-600">
@@ -18,7 +34,16 @@ const Navbar = () => {
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
                 </a>
                 <div className="flex md:order-2">
-                    <button onClick={() => dispatch(openCreationModal())} type="button" className="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                    {isLogged ?
+                        <button onClick={handleLogoutButton} type="button" className="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-2 bg-red-600 hover:bg-red-700 focus:ring-red-800">
+                            Cerrar sesión
+                        </button> :
+                        <button onClick={handleLoginButton} type="button" className="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                            Iniciar sesión
+                        </button>
+                    }
+
+                    <button onClick={() => router.push('/announcements/new')} type="button" className="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
                         Nuevo anuncio
                     </button>
 

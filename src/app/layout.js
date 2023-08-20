@@ -1,8 +1,11 @@
+"use client"
+
 import { Providers } from "@redux/provider";
 import '../../styles/globals.css';
 import { Inter } from 'next/font/google';
-import Navbar from 'components/Shared/Navbar';
 
+import Navbar from 'components/Shared/Navbar';
+import { ProtectedRoute } from "@utils/ProtectedRoute";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,9 +15,9 @@ export default function RootLayout({ children }) {
       <body>
         <Providers>
           <Navbar></Navbar>
-          <ProtectRoute>
+          <ProtectedRoute>
             {children}
-          </ProtectRoute>
+          </ProtectedRoute>
         </Providers>
       </body>
     </html>
