@@ -20,7 +20,7 @@ const AnnouncementsPage = async () => {
   const { blogs } = await fetchAnnouncements();
   return (
     <>
-      {blogs.map((announcement, index) => <AnnouncementPreview key={index} announcement={announcement} />)}
+      <AnnouncementPreview announcements={blogs} />
     </>
   )
 }
