@@ -3,14 +3,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { userLogin, logout } from "../actions/authActions";
 
-import cookieCutter from 'cookie-cutter';
-
-const userToken = cookieCutter.get('userToken') ? cookieCutter.get('userToken') : null;
-
 const initialState = {
     loading: false,
     userInfo: {}, // for user object
-    userToken, // for storing the JWT
+    userToken: null, // for storing the JWT
     error: null,
 }
 
@@ -22,9 +18,9 @@ const authSlice = createSlice({
             state.loading = false;
             state.userToken = null;
             state.userInfo = {};
-            
         },
         [userLogin]: (state, { payload }) => {
+            console.log(userLogin);
             state.userInfo = payload.userInfo;
             state.userToken = payload.token;
             state.loading = false;
