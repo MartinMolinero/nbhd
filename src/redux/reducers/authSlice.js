@@ -2,11 +2,19 @@
 
 import { createSlice } from '@reduxjs/toolkit'
 import { userLogin, logout } from "../actions/authActions";
+import isBrowser from '@utils/isBrowser';
+
+
+let userToken = null;
+if(isBrowser()) {
+    userToken = window.localStorage.getItem('userToken') ?
+        window.localStorage.getItem('userToken') : null;
+}
 
 const initialState = {
     loading: false,
     userInfo: {}, // for user object
-    userToken: null, // for storing the JWT
+    userToken, // for storing the JWT
     error: null,
 }
 
@@ -23,7 +31,6 @@ const authSlice = createSlice({
             }
         },
         [userLogin]: (state, { payload }) => {
-            console.log(payload);
             return {
                 ...state,
                 userInfo: payload.userInfo,
