@@ -16,9 +16,7 @@ export default function RootLayout({ children }) {
       <body>
         <Providers store={store}>
           <Navbar></Navbar>
-          <ProtectedRoute>
-            {children}
-          </ProtectedRoute>
+          {children}
         </Providers>
       </body>
     </html>
